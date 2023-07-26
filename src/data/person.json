@@ -1,0 +1,29 @@
+{"person": {
+  "personName": {
+
+    "firstName": "Ross",
+    "lastName": "Clark",
+    "otherNames": "William",
+    "preferredTitle": "none"
+  },
+  "personBio": {
+    "DOB": "1976-09-30",
+    "statement": "llllll",
+    "experience": "df",
+    "socialMedia": {
+      "youTube": "https://user.com"
+    },
+    "projects": {
+      "something": "desc"
+    }
+  },
+  "personMember": {
+    "status": "active",
+    "roles": [
+      "admin"
+      ],
+    "joinedDate": "30.09.1976",
+    "leftDate": "30.09.1976",
+    "active": true
+  }
+}}
