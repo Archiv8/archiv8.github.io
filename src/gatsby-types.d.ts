@@ -355,8 +355,18 @@ type File = Node & {
   readonly birthtime: Maybe<Scalars['Date']>;
   /** @deprecated Use `birthTime` instead */
   readonly birthtimeMs: Maybe<Scalars['Float']>;
+  readonly blksize: Maybe<Scalars['Int']>;
+  readonly blocks: Maybe<Scalars['Int']>;
   readonly changeTime: Scalars['Date'];
+  /** Returns the first child node of type Json or null if there are no children of given type on this node */
+  readonly childJson: Maybe<Json>;
+  /** Returns the first child node of type Mdx or null if there are no children of given type on this node */
+  readonly childMdx: Maybe<Mdx>;
   readonly children: ReadonlyArray<Node>;
+  /** Returns all children nodes filtered by type Json */
+  readonly childrenJson: Maybe<ReadonlyArray<Maybe<Json>>>;
+  /** Returns all children nodes filtered by type Mdx */
+  readonly childrenMdx: Maybe<ReadonlyArray<Maybe<Mdx>>>;
   readonly ctime: Scalars['Date'];
   readonly ctimeMs: Scalars['Float'];
   readonly dev: Scalars['Int'];
@@ -496,8 +506,14 @@ type FileFieldSelector = {
   readonly birthTime: InputMaybe<FieldSelectorEnum>;
   readonly birthtime: InputMaybe<FieldSelectorEnum>;
   readonly birthtimeMs: InputMaybe<FieldSelectorEnum>;
+  readonly blksize: InputMaybe<FieldSelectorEnum>;
+  readonly blocks: InputMaybe<FieldSelectorEnum>;
   readonly changeTime: InputMaybe<FieldSelectorEnum>;
+  readonly childJson: InputMaybe<JsonFieldSelector>;
+  readonly childMdx: InputMaybe<MdxFieldSelector>;
   readonly children: InputMaybe<NodeFieldSelector>;
+  readonly childrenJson: InputMaybe<JsonFieldSelector>;
+  readonly childrenMdx: InputMaybe<MdxFieldSelector>;
   readonly ctime: InputMaybe<FieldSelectorEnum>;
   readonly ctimeMs: InputMaybe<FieldSelectorEnum>;
   readonly dev: InputMaybe<FieldSelectorEnum>;
@@ -535,8 +551,14 @@ type FileFilterInput = {
   readonly birthTime: InputMaybe<DateQueryOperatorInput>;
   readonly birthtime: InputMaybe<DateQueryOperatorInput>;
   readonly birthtimeMs: InputMaybe<FloatQueryOperatorInput>;
+  readonly blksize: InputMaybe<IntQueryOperatorInput>;
+  readonly blocks: InputMaybe<IntQueryOperatorInput>;
   readonly changeTime: InputMaybe<DateQueryOperatorInput>;
+  readonly childJson: InputMaybe<JsonFilterInput>;
+  readonly childMdx: InputMaybe<MdxFilterInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
+  readonly childrenJson: InputMaybe<JsonFilterListInput>;
+  readonly childrenMdx: InputMaybe<MdxFilterListInput>;
   readonly ctime: InputMaybe<DateQueryOperatorInput>;
   readonly ctimeMs: InputMaybe<FloatQueryOperatorInput>;
   readonly dev: InputMaybe<IntQueryOperatorInput>;
@@ -615,8 +637,14 @@ type FileSortInput = {
   readonly birthTime: InputMaybe<SortOrderEnum>;
   readonly birthtime: InputMaybe<SortOrderEnum>;
   readonly birthtimeMs: InputMaybe<SortOrderEnum>;
+  readonly blksize: InputMaybe<SortOrderEnum>;
+  readonly blocks: InputMaybe<SortOrderEnum>;
   readonly changeTime: InputMaybe<SortOrderEnum>;
+  readonly childJson: InputMaybe<JsonSortInput>;
+  readonly childMdx: InputMaybe<MdxSortInput>;
   readonly children: InputMaybe<NodeSortInput>;
+  readonly childrenJson: InputMaybe<JsonSortInput>;
+  readonly childrenMdx: InputMaybe<MdxSortInput>;
   readonly ctime: InputMaybe<SortOrderEnum>;
   readonly ctimeMs: InputMaybe<SortOrderEnum>;
   readonly dev: InputMaybe<SortOrderEnum>;
@@ -894,7 +922,286 @@ type JSONQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['JSON']>;
 };
 
+type Json = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly parent: Maybe<Node>;
+  readonly person: Maybe<JsonPerson>;
+};
+
+type JsonConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<JsonEdge>;
+  readonly group: ReadonlyArray<JsonGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<Json>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type JsonConnection_distinctArgs = {
+  field: JsonFieldSelector;
+};
+
+
+type JsonConnection_groupArgs = {
+  field: JsonFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type JsonConnection_maxArgs = {
+  field: JsonFieldSelector;
+};
+
+
+type JsonConnection_minArgs = {
+  field: JsonFieldSelector;
+};
+
+
+type JsonConnection_sumArgs = {
+  field: JsonFieldSelector;
+};
+
+type JsonEdge = {
+  readonly next: Maybe<Json>;
+  readonly node: Json;
+  readonly previous: Maybe<Json>;
+};
+
+type JsonFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly person: InputMaybe<JsonPersonFieldSelector>;
+};
+
+type JsonFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly person: InputMaybe<JsonPersonFilterInput>;
+};
+
+type JsonFilterListInput = {
+  readonly elemMatch: InputMaybe<JsonFilterInput>;
+};
+
+type JsonGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<JsonEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<JsonGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<Json>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type JsonGroupConnection_distinctArgs = {
+  field: JsonFieldSelector;
+};
+
+
+type JsonGroupConnection_groupArgs = {
+  field: JsonFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type JsonGroupConnection_maxArgs = {
+  field: JsonFieldSelector;
+};
+
+
+type JsonGroupConnection_minArgs = {
+  field: JsonFieldSelector;
+};
+
+
+type JsonGroupConnection_sumArgs = {
+  field: JsonFieldSelector;
+};
+
+type JsonPerson = {
+  readonly personBio: Maybe<JsonPersonPersonBio>;
+  readonly personMember: Maybe<JsonPersonPersonMember>;
+  readonly personName: Maybe<JsonPersonPersonName>;
+};
+
+type JsonPersonFieldSelector = {
+  readonly personBio: InputMaybe<JsonPersonPersonBioFieldSelector>;
+  readonly personMember: InputMaybe<JsonPersonPersonMemberFieldSelector>;
+  readonly personName: InputMaybe<JsonPersonPersonNameFieldSelector>;
+};
+
+type JsonPersonFilterInput = {
+  readonly personBio: InputMaybe<JsonPersonPersonBioFilterInput>;
+  readonly personMember: InputMaybe<JsonPersonPersonMemberFilterInput>;
+  readonly personName: InputMaybe<JsonPersonPersonNameFilterInput>;
+};
+
+type JsonPersonPersonBio = {
+  readonly DOB: Maybe<Scalars['Date']>;
+  readonly experience: Maybe<Scalars['String']>;
+  readonly projects: Maybe<JsonPersonPersonBioProjects>;
+  readonly socialMedia: Maybe<JsonPersonPersonBioSocialMedia>;
+  readonly statement: Maybe<Scalars['String']>;
+};
+
+
+type JsonPersonPersonBio_DOBArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type JsonPersonPersonBioFieldSelector = {
+  readonly DOB: InputMaybe<FieldSelectorEnum>;
+  readonly experience: InputMaybe<FieldSelectorEnum>;
+  readonly projects: InputMaybe<JsonPersonPersonBioProjectsFieldSelector>;
+  readonly socialMedia: InputMaybe<JsonPersonPersonBioSocialMediaFieldSelector>;
+  readonly statement: InputMaybe<FieldSelectorEnum>;
+};
+
+type JsonPersonPersonBioFilterInput = {
+  readonly DOB: InputMaybe<DateQueryOperatorInput>;
+  readonly experience: InputMaybe<StringQueryOperatorInput>;
+  readonly projects: InputMaybe<JsonPersonPersonBioProjectsFilterInput>;
+  readonly socialMedia: InputMaybe<JsonPersonPersonBioSocialMediaFilterInput>;
+  readonly statement: InputMaybe<StringQueryOperatorInput>;
+};
+
+type JsonPersonPersonBioProjects = {
+  readonly something: Maybe<Scalars['String']>;
+};
+
+type JsonPersonPersonBioProjectsFieldSelector = {
+  readonly something: InputMaybe<FieldSelectorEnum>;
+};
+
+type JsonPersonPersonBioProjectsFilterInput = {
+  readonly something: InputMaybe<StringQueryOperatorInput>;
+};
+
+type JsonPersonPersonBioProjectsSortInput = {
+  readonly something: InputMaybe<SortOrderEnum>;
+};
+
+type JsonPersonPersonBioSocialMedia = {
+  readonly youTube: Maybe<Scalars['String']>;
+};
+
+type JsonPersonPersonBioSocialMediaFieldSelector = {
+  readonly youTube: InputMaybe<FieldSelectorEnum>;
+};
+
+type JsonPersonPersonBioSocialMediaFilterInput = {
+  readonly youTube: InputMaybe<StringQueryOperatorInput>;
+};
+
+type JsonPersonPersonBioSocialMediaSortInput = {
+  readonly youTube: InputMaybe<SortOrderEnum>;
+};
+
+type JsonPersonPersonBioSortInput = {
+  readonly DOB: InputMaybe<SortOrderEnum>;
+  readonly experience: InputMaybe<SortOrderEnum>;
+  readonly projects: InputMaybe<JsonPersonPersonBioProjectsSortInput>;
+  readonly socialMedia: InputMaybe<JsonPersonPersonBioSocialMediaSortInput>;
+  readonly statement: InputMaybe<SortOrderEnum>;
+};
+
+type JsonPersonPersonMember = {
+  readonly active: Maybe<Scalars['Boolean']>;
+  readonly joinedDate: Maybe<Scalars['String']>;
+  readonly leftDate: Maybe<Scalars['String']>;
+  readonly roles: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly status: Maybe<Scalars['String']>;
+};
+
+type JsonPersonPersonMemberFieldSelector = {
+  readonly active: InputMaybe<FieldSelectorEnum>;
+  readonly joinedDate: InputMaybe<FieldSelectorEnum>;
+  readonly leftDate: InputMaybe<FieldSelectorEnum>;
+  readonly roles: InputMaybe<FieldSelectorEnum>;
+  readonly status: InputMaybe<FieldSelectorEnum>;
+};
+
+type JsonPersonPersonMemberFilterInput = {
+  readonly active: InputMaybe<BooleanQueryOperatorInput>;
+  readonly joinedDate: InputMaybe<StringQueryOperatorInput>;
+  readonly leftDate: InputMaybe<StringQueryOperatorInput>;
+  readonly roles: InputMaybe<StringQueryOperatorInput>;
+  readonly status: InputMaybe<StringQueryOperatorInput>;
+};
+
+type JsonPersonPersonMemberSortInput = {
+  readonly active: InputMaybe<SortOrderEnum>;
+  readonly joinedDate: InputMaybe<SortOrderEnum>;
+  readonly leftDate: InputMaybe<SortOrderEnum>;
+  readonly roles: InputMaybe<SortOrderEnum>;
+  readonly status: InputMaybe<SortOrderEnum>;
+};
+
+type JsonPersonPersonName = {
+  readonly firstName: Maybe<Scalars['String']>;
+  readonly lastName: Maybe<Scalars['String']>;
+  readonly otherNames: Maybe<Scalars['String']>;
+  readonly preferredTitle: Maybe<Scalars['String']>;
+};
+
+type JsonPersonPersonNameFieldSelector = {
+  readonly firstName: InputMaybe<FieldSelectorEnum>;
+  readonly lastName: InputMaybe<FieldSelectorEnum>;
+  readonly otherNames: InputMaybe<FieldSelectorEnum>;
+  readonly preferredTitle: InputMaybe<FieldSelectorEnum>;
+};
+
+type JsonPersonPersonNameFilterInput = {
+  readonly firstName: InputMaybe<StringQueryOperatorInput>;
+  readonly lastName: InputMaybe<StringQueryOperatorInput>;
+  readonly otherNames: InputMaybe<StringQueryOperatorInput>;
+  readonly preferredTitle: InputMaybe<StringQueryOperatorInput>;
+};
+
+type JsonPersonPersonNameSortInput = {
+  readonly firstName: InputMaybe<SortOrderEnum>;
+  readonly lastName: InputMaybe<SortOrderEnum>;
+  readonly otherNames: InputMaybe<SortOrderEnum>;
+  readonly preferredTitle: InputMaybe<SortOrderEnum>;
+};
+
+type JsonPersonSortInput = {
+  readonly personBio: InputMaybe<JsonPersonPersonBioSortInput>;
+  readonly personMember: InputMaybe<JsonPersonPersonMemberSortInput>;
+  readonly personName: InputMaybe<JsonPersonPersonNameSortInput>;
+};
+
+type JsonSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly person: InputMaybe<JsonPersonSortInput>;
+};
+
 type Mdx = Node & {
+  readonly body: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
   readonly excerpt: Maybe<Scalars['String']>;
   readonly frontmatter: Maybe<Frontmatter>;
@@ -960,6 +1267,7 @@ type MdxEdge = {
 };
 
 type MdxFieldSelector = {
+  readonly body: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly excerpt: InputMaybe<FieldSelectorEnum>;
   readonly frontmatter: InputMaybe<FrontmatterFieldSelector>;
@@ -970,6 +1278,7 @@ type MdxFieldSelector = {
 };
 
 type MdxFilterInput = {
+  readonly body: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly excerpt: InputMaybe<StringQueryOperatorInput>;
   readonly frontmatter: InputMaybe<FrontmatterFilterInput>;
@@ -977,6 +1286,10 @@ type MdxFilterInput = {
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly tableOfContents: InputMaybe<JSONQueryOperatorInput>;
+};
+
+type MdxFilterListInput = {
+  readonly elemMatch: InputMaybe<MdxFilterInput>;
 };
 
 type MdxGroupConnection = {
@@ -1021,6 +1334,7 @@ type MdxGroupConnection_sumArgs = {
 };
 
 type MdxSortInput = {
+  readonly body: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly excerpt: InputMaybe<SortOrderEnum>;
   readonly frontmatter: InputMaybe<FrontmatterSortInput>;
@@ -1077,6 +1391,7 @@ type Query = {
   readonly allDirectory: DirectoryConnection;
   readonly allFile: FileConnection;
   readonly allFrontmatter: FrontmatterConnection;
+  readonly allJson: JsonConnection;
   readonly allMdx: MdxConnection;
   readonly allPersonJson: personJsonConnection;
   readonly allSite: SiteConnection;
@@ -1087,6 +1402,7 @@ type Query = {
   readonly directory: Maybe<Directory>;
   readonly file: Maybe<File>;
   readonly frontmatter: Maybe<Frontmatter>;
+  readonly json: Maybe<Json>;
   readonly mdx: Maybe<Mdx>;
   readonly personJson: Maybe<personJson>;
   readonly site: Maybe<Site>;
@@ -1118,6 +1434,14 @@ type Query_allFrontmatterArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<FrontmatterSortInput>>>;
+};
+
+
+type Query_allJsonArgs = {
+  filter: InputMaybe<JsonFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<JsonSortInput>>>;
 };
 
 
@@ -1225,8 +1549,14 @@ type Query_fileArgs = {
   birthTime: InputMaybe<DateQueryOperatorInput>;
   birthtime: InputMaybe<DateQueryOperatorInput>;
   birthtimeMs: InputMaybe<FloatQueryOperatorInput>;
+  blksize: InputMaybe<IntQueryOperatorInput>;
+  blocks: InputMaybe<IntQueryOperatorInput>;
   changeTime: InputMaybe<DateQueryOperatorInput>;
+  childJson: InputMaybe<JsonFilterInput>;
+  childMdx: InputMaybe<MdxFilterInput>;
   children: InputMaybe<NodeFilterListInput>;
+  childrenJson: InputMaybe<JsonFilterListInput>;
+  childrenMdx: InputMaybe<MdxFilterListInput>;
   ctime: InputMaybe<DateQueryOperatorInput>;
   ctimeMs: InputMaybe<FloatQueryOperatorInput>;
   dev: InputMaybe<IntQueryOperatorInput>;
@@ -1278,7 +1608,17 @@ type Query_frontmatterArgs = {
 };
 
 
+type Query_jsonArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  person: InputMaybe<JsonPersonFilterInput>;
+};
+
+
 type Query_mdxArgs = {
+  body: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   excerpt: InputMaybe<StringQueryOperatorInput>;
   frontmatter: InputMaybe<FrontmatterFilterInput>;
