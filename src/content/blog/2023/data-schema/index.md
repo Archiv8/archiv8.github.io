@@ -1,16 +1,18 @@
 ---
+
 title: Blog -2023
+subTitle: Aboutthe world
+pageDescription: What goes here
 tags: Riss Clark
+authorUserId: Ross Clark
+contributorUserId: Riss Clark
+reviewerUserId: Riss Clark
 slug: blog/2023/data-schema
-author: Riss Clark
-contributors: Riss Clark
-reviewers: Riss Clark
-createdTime: 09-09-09
-dateModified: Riss Clark
-dateReviewed: Riss Clark
-dateReviewDue: Riss Clark
-published: Riss Clark
----
+published: false
+contentType: info
+dateCreated: 09-09-09
+published: false
+---------------
 
 ## Structuring Site's Data
 
@@ -18,7 +20,7 @@ Planning the structure for the data to be used in the site
 
 ### Site Metadata
 
-``` javascript
+```javascript
 {
 siteMetadata: {
     title: "Archiv8",
@@ -32,6 +34,5 @@ siteMetadata: {
 ```
 
 ### Contributor Information
-
 
 ### Pages and Posts

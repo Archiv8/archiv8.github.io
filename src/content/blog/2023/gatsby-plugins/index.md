@@ -1,16 +1,17 @@
 ---
+
 title: Blog -2023
+subTitle: Aboutthe world
+pageDescription: What goes here
 tags: Riss Clark
+authorUserId: Ross Clark
+contributorUserId: Riss Clark
+reviewerUserId: Riss Clark
 slug: blog/2023/gatsby-plugins
-author: Riss Clark
-contributors: Riss Clark
-reviewers: Riss Clark
-createdTime: 09-09-09
-dateModified: Riss Clark
-dateReviewed: Riss Clark
-dateReviewDue: Riss Clark
-published: Riss Clark
----
+contentType: info
+dateCreated: 09-09-09
+published: false
+---------------
 
     This plugin intercepts all local links that have not been created in React using gatsby-link, and replaces their behavior with that of the gatsby-link navigate. This avoids the browser having to refresh the whole page when navigating between local pages, preserving the Single Page Application (SPA) feel.
 
