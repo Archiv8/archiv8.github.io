@@ -18,53 +18,55 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         "Node"
       ],
       "fields": {
-        "pageType": {
+        "authorUserId": {
           "type": "String"
         },
-        "title": {
+        "contentType": {
           "type": "String"
+        },
+        "contributorUserId": {
+          "type": "String"
+        },
+        "dateCreated": {
+          "type": "Date"
         },
         "pageDescription": {
           "type": "String!"
         },
-        "tags": {
-          "type": "String"
-        },
         "published": {
           "type": "String"
         },
-        "authors": {
-          "type": "String"
-        },
-        "contributors": {
-          "type": "String"
-        },
-        "reviewers": {
+        "reviewerUserId": {
           "type": "String"
         },
         "slug": {
           "type": "String"
         },
-        "dateCreated": {
-          "type": "Date",
-          resolve(parent) {
-
-            return parent.title || "(Untitled)"
-
-          }
+        "subTitle": {
+          "type": "String"
         },
-        "dateModified": {
-          "type": "Date"
+        "tags": {
+          "type": "String"
         },
-        "datePublished": {
-          "type": "Date"
-        },
-        "dateReviewed": {
-          "type": "Date"
-        },
-        "dateReviewDue": {
-          "type": "Date"
+        "title": {
+          "type": "String"
         }
+
+        /*
+         * @todo Use hashes created on "git commit" to retrieve date/time for the following. File/folder dates are only reliable on original local repository. The dates of a fresh clone will not be based on the filesystem but on the commit latest hash.
+         * "dateModified": {
+         *   "type": "Date"
+         * },
+         * "datePublished": {
+         *   "type": "Date"
+         * },
+         * "dateReviewed": {
+         *   "type": "Date"
+         * },
+         * "dateReviewDue": {
+         *   "type": "Date"
+         * }
+         */
       },
       "extensions": {
         "infer": false
@@ -98,31 +100,6 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   console.log("++++++ createPages")
   const { createPage } = actions
 
-  const pathInfoAllMdx = await graphql(`
-query {
-  allMdx {
-    nodes {
-      id
-      internal {
-        contentFilePath
-      }
-    }
-  }
-  }
-  `)
-
-  const pathInfoAllSitePage = await graphql(`
-query {
-  allSitePage {
-    nodes {
-      pageContext
-      path
-    }
-  }
-}
-
-  `)
-
   const result = await graphql(`
     query {
       allMdx {
@@ -154,6 +131,7 @@ query {
 
   const posts = result.data.allMdx.nodes
 
+
   // You'll call `createPage` for each result
   posts.forEach((node) => {
 
@@ -161,13 +139,17 @@ query {
 
     createPage({
 
-
       /*
-       * As mentioned above you could also query something else like frontmatter.title above and use a helper function
-       * like slugify to create a slug
+       * @todo Slugs become increasinly unreliable when the site stucture alters. Replace front matter slugs as an alternative.
+       *
+       * Use a different query / method, like frontmatter.title with a helper function such as slugify to create a slug.
        */
+      // Console.log(),
       "path": node.frontmatter.slug,
       // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
+
+      // Console.log("node.pageContext"),
+
       "component": `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
 
       /*
