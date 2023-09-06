@@ -685,22 +685,19 @@ type FloatQueryOperatorInput = {
 };
 
 type Frontmatter = Node & {
-  readonly authors: Maybe<Scalars['String']>;
+  readonly authorUserId: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
-  readonly contributors: Maybe<Scalars['String']>;
+  readonly contentType: Maybe<Scalars['String']>;
+  readonly contributorUserId: Maybe<Scalars['String']>;
   readonly dateCreated: Maybe<Scalars['Date']>;
-  readonly dateModified: Maybe<Scalars['Date']>;
-  readonly datePublished: Maybe<Scalars['Date']>;
-  readonly dateReviewDue: Maybe<Scalars['Date']>;
-  readonly dateReviewed: Maybe<Scalars['Date']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly pageDescription: Scalars['String'];
-  readonly pageType: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
   readonly published: Maybe<Scalars['String']>;
-  readonly reviewers: Maybe<Scalars['String']>;
+  readonly reviewerUserId: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
+  readonly subTitle: Maybe<Scalars['String']>;
   readonly tags: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
@@ -751,43 +748,37 @@ type FrontmatterEdge = {
 };
 
 type FrontmatterFieldSelector = {
-  readonly authors: InputMaybe<FieldSelectorEnum>;
+  readonly authorUserId: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contributors: InputMaybe<FieldSelectorEnum>;
+  readonly contentType: InputMaybe<FieldSelectorEnum>;
+  readonly contributorUserId: InputMaybe<FieldSelectorEnum>;
   readonly dateCreated: InputMaybe<FieldSelectorEnum>;
-  readonly dateModified: InputMaybe<FieldSelectorEnum>;
-  readonly datePublished: InputMaybe<FieldSelectorEnum>;
-  readonly dateReviewDue: InputMaybe<FieldSelectorEnum>;
-  readonly dateReviewed: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly pageDescription: InputMaybe<FieldSelectorEnum>;
-  readonly pageType: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly published: InputMaybe<FieldSelectorEnum>;
-  readonly reviewers: InputMaybe<FieldSelectorEnum>;
+  readonly reviewerUserId: InputMaybe<FieldSelectorEnum>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
+  readonly subTitle: InputMaybe<FieldSelectorEnum>;
   readonly tags: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
 type FrontmatterFilterInput = {
-  readonly authors: InputMaybe<StringQueryOperatorInput>;
+  readonly authorUserId: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
-  readonly contributors: InputMaybe<StringQueryOperatorInput>;
+  readonly contentType: InputMaybe<StringQueryOperatorInput>;
+  readonly contributorUserId: InputMaybe<StringQueryOperatorInput>;
   readonly dateCreated: InputMaybe<DateQueryOperatorInput>;
-  readonly dateModified: InputMaybe<DateQueryOperatorInput>;
-  readonly datePublished: InputMaybe<DateQueryOperatorInput>;
-  readonly dateReviewDue: InputMaybe<DateQueryOperatorInput>;
-  readonly dateReviewed: InputMaybe<DateQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly pageDescription: InputMaybe<StringQueryOperatorInput>;
-  readonly pageType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly published: InputMaybe<StringQueryOperatorInput>;
-  readonly reviewers: InputMaybe<StringQueryOperatorInput>;
+  readonly reviewerUserId: InputMaybe<StringQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
+  readonly subTitle: InputMaybe<StringQueryOperatorInput>;
   readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
@@ -834,22 +825,19 @@ type FrontmatterGroupConnection_sumArgs = {
 };
 
 type FrontmatterSortInput = {
-  readonly authors: InputMaybe<SortOrderEnum>;
+  readonly authorUserId: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
-  readonly contributors: InputMaybe<SortOrderEnum>;
+  readonly contentType: InputMaybe<SortOrderEnum>;
+  readonly contributorUserId: InputMaybe<SortOrderEnum>;
   readonly dateCreated: InputMaybe<SortOrderEnum>;
-  readonly dateModified: InputMaybe<SortOrderEnum>;
-  readonly datePublished: InputMaybe<SortOrderEnum>;
-  readonly dateReviewDue: InputMaybe<SortOrderEnum>;
-  readonly dateReviewed: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly pageDescription: InputMaybe<SortOrderEnum>;
-  readonly pageType: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly published: InputMaybe<SortOrderEnum>;
-  readonly reviewers: InputMaybe<SortOrderEnum>;
+  readonly reviewerUserId: InputMaybe<SortOrderEnum>;
   readonly slug: InputMaybe<SortOrderEnum>;
+  readonly subTitle: InputMaybe<SortOrderEnum>;
   readonly tags: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
@@ -1587,22 +1575,19 @@ type Query_fileArgs = {
 
 
 type Query_frontmatterArgs = {
-  authors: InputMaybe<StringQueryOperatorInput>;
+  authorUserId: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
-  contributors: InputMaybe<StringQueryOperatorInput>;
+  contentType: InputMaybe<StringQueryOperatorInput>;
+  contributorUserId: InputMaybe<StringQueryOperatorInput>;
   dateCreated: InputMaybe<DateQueryOperatorInput>;
-  dateModified: InputMaybe<DateQueryOperatorInput>;
-  datePublished: InputMaybe<DateQueryOperatorInput>;
-  dateReviewDue: InputMaybe<DateQueryOperatorInput>;
-  dateReviewed: InputMaybe<DateQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   pageDescription: InputMaybe<StringQueryOperatorInput>;
-  pageType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   published: InputMaybe<StringQueryOperatorInput>;
-  reviewers: InputMaybe<StringQueryOperatorInput>;
+  reviewerUserId: InputMaybe<StringQueryOperatorInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
+  subTitle: InputMaybe<StringQueryOperatorInput>;
   tags: InputMaybe<StringQueryOperatorInput>;
   title: InputMaybe<StringQueryOperatorInput>;
 };

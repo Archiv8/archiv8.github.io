@@ -4912,6 +4912,7 @@ __metadata:
     jsdoc: ^4.0.2
     react: ^18.2.0
     react-dom: ^18.2.0
+    remark: ^14.0.3
   bin:
     archiv8: ""
   languageName: unknown
@@ -14769,6 +14770,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"remark-stringify@npm:^10.0.0":
+  version: 10.0.3
+  resolution: "remark-stringify@npm:10.0.3"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    mdast-util-to-markdown: ^1.0.0
+    unified: ^10.0.0
+  checksum: 6004e204fba672ee322c3cf0bef090e95802feedf7ef875f88b120c5e6208f1eb09c014486d5ca42a1e199c0a17ce0ed165fb248c66608458afed4bdca51dd3a
+  languageName: node
+  linkType: hard
+
 "remark-unwrap-images@npm:^3.0.1":
   version: 3.0.1
   resolution: "remark-unwrap-images@npm:3.0.1"
@@ -14778,6 +14790,18 @@ __metadata:
     unified: ^10.0.0
     unist-util-visit: ^4.0.0
   checksum: 93cdce09f3c5c64f9d1ee789e9f213e339e029e0cbcb155e1866c42e1950aa218e83282b9bdd6a0bf64eb4878d733b151b338aad0f71e1c6d00e0a6b8858d26b
+  languageName: node
+  linkType: hard
+
+"remark@npm:^14.0.3":
+  version: 14.0.3
+  resolution: "remark@npm:14.0.3"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    remark-parse: ^10.0.0
+    remark-stringify: ^10.0.0
+    unified: ^10.0.0
+  checksum: 36eec9668c5f5e497507fa5d396c79183265a5f7dd204a608e7f031a4f61b48f7bb5cfaec212f5614ccd1266cc4a9f8d7a59a45e95aed9876986b4c453b191be
   languageName: node
   linkType: hard
 
