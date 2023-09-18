@@ -4,7 +4,7 @@ title: Blog -2023
 subTitle: Aboutthe world
 pageDescription: What goes here
 tags: Riss Clark
-authorUserId: Ross Clark
+authorUserId: RossClark
 contributorUserId: Riss Clark
 reviewerUserId: Riss Clark
 slug: blog/2023/gatsby-routes-api
