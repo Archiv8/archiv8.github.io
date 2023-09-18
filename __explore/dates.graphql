@@ -1,0 +1,10 @@
+query MyQuery {
+  allFile(filter: {extension: {eq: "mdx"}}) {
+    nodes {
+      id
+      extension
+      ctime
+      modifiedTime
+    }
+  }
+}
