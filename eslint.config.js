@@ -1,5 +1,11 @@
 /*
  * @file ESLint Configuration
+ * @author Ross Clark
+ * @copyright 2023
+ * @license
+ * @todo Split settings into manageable chunks either as a:
+ * - A shareable config
+ * - A plugin
  */
 
 const babelRules = require("@babel/eslint-plugin")
@@ -69,10 +75,28 @@ module.exports = [
 
 
     "rules": {
+
+      /*
+       * @todo ESLint, array-bracket-newline
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/array-bracket-newline|array-bracket-newline}
+       */
       "array-bracket-newline": [
         "warn",
         "always"
       ],
+
+      /*
+       * @todo ESLint, array-element-newline
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/array-element-newline|array-element-newline}
+       */
       "array-element-newline": [
         "warn",
         "always",
@@ -84,7 +108,12 @@ module.exports = [
 
 
       /*
-       * Set more ignore patterns, if necessary for jest etc.
+       * @todo ESLint, capitalized-comments
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       * - If necessary Set more ignore patterns,  for jest etc.
        * @see {@link https://eslint.org/docs/latest/rules/capitalized-comments|capitalized-comments}
        */
       "capitalized-comments": [
@@ -96,6 +125,15 @@ module.exports = [
           "ignorePattern": "jscs|jshint|eslint|istanbul|global|globals|exported"
         }
       ],
+
+      /*
+       * @todo ESLint, comma-dangle
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/comma-dangle|comma-dangle}
+       */
       "comma-dangle": [
         "error",
         {
@@ -106,20 +144,29 @@ module.exports = [
           "objects": "never"
         }
       ],
-      "indent": [
 
-        /*
-         * Key : "indent". How to configure these rules?
-         * Error is: Value 1 should be object
-         * - "CallExpression": 1
-         * - "FunctionDeclaration": 1
-         * - "FunctionExpression": 1
-         * - "StaticBlock": 1
-         *
-         * Also look at docs for:
-         * "ignoredNodes": "",
-         * "tab": "",
-         */
+      /*
+       * @todo ESLint, complexity
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/complexity|complexity}
+       */
+      // "complexity": [], https://eslint.org/docs/latest/rules/complexity
+
+      /*
+       * @todo ESLint, indent
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options, including:
+       *     - "ignoredNodes": "",
+       *     - "tab": "",
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       * Figure out what triggers error; Value 1 should be object
+       * @see {@link https://eslint.org/docs/latest/rules/indent|indent}
+       */
+      "indent": [
         "warn",
         2,
         {
@@ -135,6 +182,15 @@ module.exports = [
           "outerIIFEBody": 1
         }
       ],
+
+      /*
+       * @todo ESLint, max-len
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether usage is compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/max-len|max-len}
+       */
       "max-len": [
         "warn",
         {
@@ -142,38 +198,128 @@ module.exports = [
           "comments": 100,
           "ignoreComments": false,
           // "ignorePattern": "",
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
+          "ignoreRegExpLiterals": false,
+          "ignoreStrings": false,
           "ignoreTemplateLiterals": false,
           "ignoreTrailingComments": false,
           "ignoreUrls": true,
           "tabWidth": 2
         }
       ],
-      "multiline-comment-style": [
 
-        /*
-         * Read documentation for configuring this rule and other JSDoc rules:
-         * {
-         *   CheckJSDoc: true
-         * }
-         * @see {@link https://eslint.org/docs/latest/rules/multiline-comment-style|multiline-comment-style}
-         * @see {@link https://www.npmjs.com/package/eslint-plugin-jsdoc|eslint-plugin-jsdoc}
-         */
+      /*
+       * @todo ESLint, max-depth
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether changes / usage are compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/max-depth|max-depth}
+       */
+      // "max-depth": [], https://eslint.org/docs/latest/rules/max-depth
+
+      /*
+       * @todo ESLint, max-lines
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether usage compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/max-lines|max-lines}
+       */
+      "max-lines": [
+        "warn",
+        {
+          "max": 1000,
+          "skipBlankLines": false,
+          "skipComments": false
+        }
+      ],
+
+      /*
+       * @todo ESLint, max-lines-per-function
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether changes / usage are compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/https://eslint.org/docs/latest/rules/max-lines-per-function|max-lines-per-function}
+       */
+      // "max-lines-per-function": [],
+
+      /*
+       * @todo ESLint, max-nested-callbacks
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether changes / usage are compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/max-nested-callbacks|max-nested-callbacks}
+       */
+      // "max-nested-callbacks": [],
+
+      /*
+       * @todo ESLint, max-params
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether changes / usage are compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/max-params|max-params}
+       */
+      // "max-params": [], https://eslint.org/docs/latest/rules/max-params
+
+      /*
+       * @todo ESLint, max-statements
+       * - Verify configurations option against Gatsby settings
+       *   - Understand unused options
+       *   - Whether changes / usage are compatible with Gatsby
+       * - How / whether changes will effect readability of code
+       * @see {@link https://eslint.org/docs/latest/rules/max-statements|max-statements}
+       */
+      //  "max-statements": [],
+
+
+      /*
+       * @todo ESLint, multiline-comment-style
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/multiline-comment-style|multiline-comment-style}
+       */
+      "multiline-comment-style": [
         "warn",
         "starred-block"
       ],
 
+
       /*
-       * Cannot get "no-anonymous-exports-page-templates" from gatsby-plugin-eslint to function:
+       * @todo ESLint, no-anonymous-exports-page-templates
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @todo Cannot get "no-anonymous-exports-page-templates" from gatsby-plugin-eslint to
+       * function:
        * - Does it require use through gatsby-config.mjs
-       * - Cant it be used directly as preferred option?
+       * - Can it be used directly as preferred option?
+       *
        * @see {@link https://www.npmjs.com/package/gatsby-plugin-eslint|no-anonymous-exports-page-templates from gatsby-plugin-eslint}
        * @see {@link https://github.com/mongkuen/gatsby-plugin-eslint|gatsby-plugin-eslint GitHub repository}
        * @see {@link https://www.gatsbyjs.com/plugins/gatsby-plugin-eslint|gatsby-plugin-eslint in the Gatsby Documentation}
        */
-
       // "no-anonymous-exports-page-templates": "warn",
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-magic-numbers": [
         "error",
         {
@@ -189,15 +335,48 @@ module.exports = [
           "ignoreDefaultValues": true
         }
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-mixed-spaces-and-tabs": [
         "error"
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-tabs": [
         "error",
         {
           "allowIndentationTabs": false
         }
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-trailing-spaces": [
         "error",
         {
@@ -205,12 +384,45 @@ module.exports = [
           "skipBlankLines": false
         }
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-unexpected-multiline": [
         "error"
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-unreachable": [
         "error"
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "no-unused-expressions": [
         "warn",
         {
@@ -220,6 +432,17 @@ module.exports = [
           "enforceForJSX": false
         }
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "object-curly-spacing": [
         "warn",
         "always",
@@ -228,15 +451,43 @@ module.exports = [
           "objectsInObjects": true
         }
       ],
+
+      /*
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
+       */
       "one-var": [
         "warn",
         "never"
       ],
 
       /*
-       * Rule needs refining.
-       * As suggested:
-       * - no-unreachable is included in this config
+       * @todo ESLint, no-restricted-exports
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
+       *  @see {@link https://eslint.org/docs/latest/rules/no-restricted-exports|no-restricted-exports}
+       */
+      // "no-restrict-exports": [],
+
+      /*
+       * @todo ESLINT, semi
+       * - Rule needs refining.
+       * - As suggested n the documentation the following are included in this configuration file:
+       *   - no-unreachable
+       *   - no-unexpected-multiline
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
        *
        * @see {@link https://eslint.org/docs/latest/rules/semi|semi}
        * @see {@link https://eslint.org/docs/latest/rules/no-unreachable|no-unreachable}
@@ -248,7 +499,13 @@ module.exports = [
       ],
 
       /*
-       * Rule needs refining.
+       * @todo @todo ESLINT, sort-keys
+       * - Rule needs refining.
+       * - Verify configurations option against Gatsby settings
+       * - Understand unused options:
+       *   - Whether changes / usage is compatible with Gatsby
+       *   - How / whether changes will effect readability of code
+       *
        * @see {@link https://eslint.org/docs/latest/rules/sort-keys|sort-keys}
        */
       "sort-keys": [

@@ -2,9 +2,6 @@ node_modules/
 .cache/
 public
 
-logs
-__explore
-
 .pnp.*
 .yarn/*
 !.yarn/patches

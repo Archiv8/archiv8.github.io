@@ -18,7 +18,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         "Node"
       ],
       "fields": {
-        "authorUserId": {
+        "userId": {
           "type": "String"
         },
         "contentType": {
@@ -53,7 +53,10 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         }
 
         /*
-         * @todo Use hashes created on "git commit" to retrieve date/time for the following. File/folder dates are only reliable on original local repository. The dates of a fresh clone will not be based on the filesystem but on the commit latest hash.
+         * @todo Use hashes created on "git commit" to retrieve date/time for the following.
+         * File/folder dates are only reliable on original local repository. The dates of a fresh
+         * clone will not be based on the filesystem but on the commit latest hash.
+         *
          * "dateModified": {
          *   "type": "Date"
          * },
@@ -80,7 +83,7 @@ export const createSchemaCustomization = ({ actions, schema }) => {
         "Node"
       ],
       "fields": {
-        "userName": {
+        "userId": {
           "type": "String!"
         }
       },
@@ -100,7 +103,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   console.log("++++++ createPages")
   const { createPage } = actions
 
-  const result = await graphql(`
+  const resultSlug = await graphql(`
     query {
       allMdx {
         nodes {
@@ -116,23 +119,26 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  if (result.errors) {
+  if (resultSlug.errors) {
 
     reporter.panicOnBuild(
-      "Error loading MDX result",
-      result.errors
+      "Error loading MDX result: resultSlug",
+      resultSlug.errors
     )
 
   }
 
-  // Create blog post pages.
+  /*
+   * Create blog post pages.
+   */
 
   const postTemplate = path.resolve("./src/templates/post.jsx")
 
-  const posts = result.data.allMdx.nodes
+  const posts = resultSlug.data.allMdx.nodes
 
-
-  // You'll call `createPage` for each result
+  /*
+   * Call `createPage` for each result
+   */
   posts.forEach((node) => {
 
     console.log("------------ createPage")
@@ -140,21 +146,23 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     createPage({
 
       /*
-       * @todo Slugs become increasinly unreliable when the site stucture alters. Replace front matter slugs as an alternative.
+       * @todo URIs
+       * Slugs become increasingly unreliable when the site structure alters. Replace front
+       * matter slugs with an alternative.
        *
-       * Use a different query / method, like frontmatter.title with a helper function such as slugify to create a slug.
+       * Use a different query / method, like frontmatter.title with a helper function such as
+       * slugify to create a slug.
        */
-      // Console.log(),
       "path": node.frontmatter.slug,
-      // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
 
-      // Console.log("node.pageContext"),
-
+      /*
+       * Provide the path to the MDX content file so webpack can pick it up and transform it into
+       * JSX
+       */
       "component": `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
 
       /*
-       * You can use the values in this context in
-       * our page layout component
+       * Use the values in this context in the page layout component
        */
       "context": { "id": node.id }
     })
