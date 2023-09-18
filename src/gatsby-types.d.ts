@@ -685,7 +685,6 @@ type FloatQueryOperatorInput = {
 };
 
 type Frontmatter = Node & {
-  readonly authorUserId: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
   readonly contentType: Maybe<Scalars['String']>;
   readonly contributorUserId: Maybe<Scalars['String']>;
@@ -700,6 +699,7 @@ type Frontmatter = Node & {
   readonly subTitle: Maybe<Scalars['String']>;
   readonly tags: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
+  readonly userId: Maybe<Scalars['String']>;
 };
 
 type FrontmatterConnection = {
@@ -748,7 +748,6 @@ type FrontmatterEdge = {
 };
 
 type FrontmatterFieldSelector = {
-  readonly authorUserId: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly contentType: InputMaybe<FieldSelectorEnum>;
   readonly contributorUserId: InputMaybe<FieldSelectorEnum>;
@@ -763,10 +762,10 @@ type FrontmatterFieldSelector = {
   readonly subTitle: InputMaybe<FieldSelectorEnum>;
   readonly tags: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly userId: InputMaybe<FieldSelectorEnum>;
 };
 
 type FrontmatterFilterInput = {
-  readonly authorUserId: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly contentType: InputMaybe<StringQueryOperatorInput>;
   readonly contributorUserId: InputMaybe<StringQueryOperatorInput>;
@@ -781,6 +780,7 @@ type FrontmatterFilterInput = {
   readonly subTitle: InputMaybe<StringQueryOperatorInput>;
   readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly userId: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FrontmatterGroupConnection = {
@@ -825,7 +825,6 @@ type FrontmatterGroupConnection_sumArgs = {
 };
 
 type FrontmatterSortInput = {
-  readonly authorUserId: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly contentType: InputMaybe<SortOrderEnum>;
   readonly contributorUserId: InputMaybe<SortOrderEnum>;
@@ -840,6 +839,7 @@ type FrontmatterSortInput = {
   readonly subTitle: InputMaybe<SortOrderEnum>;
   readonly tags: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly userId: InputMaybe<SortOrderEnum>;
 };
 
 type IntQueryOperatorInput = {
@@ -1575,7 +1575,6 @@ type Query_fileArgs = {
 
 
 type Query_frontmatterArgs = {
-  authorUserId: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   contentType: InputMaybe<StringQueryOperatorInput>;
   contributorUserId: InputMaybe<StringQueryOperatorInput>;
@@ -1590,6 +1589,7 @@ type Query_frontmatterArgs = {
   subTitle: InputMaybe<StringQueryOperatorInput>;
   tags: InputMaybe<StringQueryOperatorInput>;
   title: InputMaybe<StringQueryOperatorInput>;
+  userId: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -1619,7 +1619,7 @@ type Query_personJsonArgs = {
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
-  userName: InputMaybe<StringQueryOperatorInput>;
+  userId: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -2479,7 +2479,7 @@ type personJson = Node & {
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
-  readonly userName: Scalars['String'];
+  readonly userId: Scalars['String'];
 };
 
 type personJsonConnection = {
@@ -2532,7 +2532,7 @@ type personJsonFieldSelector = {
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly userName: InputMaybe<FieldSelectorEnum>;
+  readonly userId: InputMaybe<FieldSelectorEnum>;
 };
 
 type personJsonFilterInput = {
@@ -2540,7 +2540,7 @@ type personJsonFilterInput = {
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
-  readonly userName: InputMaybe<StringQueryOperatorInput>;
+  readonly userId: InputMaybe<StringQueryOperatorInput>;
 };
 
 type personJsonGroupConnection = {
@@ -2589,7 +2589,7 @@ type personJsonSortInput = {
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
-  readonly userName: InputMaybe<SortOrderEnum>;
+  readonly userId: InputMaybe<SortOrderEnum>;
 };
 
 
