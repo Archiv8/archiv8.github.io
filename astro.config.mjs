@@ -12,7 +12,6 @@
 
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -127,12 +126,11 @@ export default defineConfig({
      *
      * @see {@link https://docs.astro.build/en/reference/configuration-reference/#top-level-options|Top level options}
     */
-  adapter: netlify(),
   // base: "",
   cacheDir: "./.cache/astro",
   // compressHTML: false,
-  outDir: "./dist",
-  output: "server",
+  outDir: "./docs",
+  output: "static",
   publicDir: "./public",
   root: ".",
   // redirects: {},
