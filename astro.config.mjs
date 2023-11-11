@@ -126,8 +126,9 @@ export default defineConfig({
      *
      * @see {@link https://docs.astro.build/en/reference/configuration-reference/#top-level-options|Top level options}
     */
+  // adapter: "",
   // base: "",
-  cacheDir: "./.cache/astro",
+  cacheDir: "./temp/astro",
   // compressHTML: false,
   outDir: "./docs",
   output: "static",
