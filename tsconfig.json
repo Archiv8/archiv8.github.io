@@ -1,0 +1,24 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "checkJs": true,
+    "paths": {
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@schemas/*": [
+        "src/schemas/*"
+      ],
+    },
+    "strictNullChecks": true,
+    "verbatimModuleSyntax": true
+  }
+}
